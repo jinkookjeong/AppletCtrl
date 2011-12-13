@@ -8,7 +8,7 @@
 <%@ page import="com.lang.msg.*" %>
 <%@ page import="com.lang.trans.*" %>
 <%@ page import="com.mn.constant.UrlConstant" %>
-<%@ page errorPage="/error/errorSystemPage.jsp" %>
+
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
@@ -19,8 +19,6 @@
 <link rel="stylesheet" type="text/css" href="/css/mn.css">
 <link rel="stylesheet" type="text/css" href="/css/sp.css">
 <link rel="stylesheet" type="text/css" href="/css/com/calendar.css">
-<link rel="stylesheet" href="/css/com/dhtmlwindow.css" type="text/css">
-<link rel="stylesheet" href="/css/com/modal.css" type="text/css">
 <script type="text/javascript" language="javascript" src="/js/com/prototype.js"></script>
 <script type="text/javascript" language="javascript" src="/js/com/calendar.js"></script>
 <script type="text/javascript" language="javascript" src="/js/com/check.js"></script>

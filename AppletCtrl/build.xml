@@ -1,0 +1,20 @@
+<project name="AppletCtrl" default="">
+
+	<target name="app.jar" depends="">
+		<property name="pkg" value="/eppd" />
+		
+		<property name="tmp_dir" value="C:/Documents and Settings/sotec/git/AppletCtrl/AppletCtrl/WebContent/java/temp" />
+		<property name="classes_dir" value="C:/Documents and Settings/sotec/git/AppletCtrl/AppletCtrl/WebContent/WEB-INF/classes" />
+		<property name="to_jar" value="C:/Documents and Settings/sotec/git/AppletCtrl/AppletCtrl/WebContent/java/download/app.jar" />
+		<delete dir="${tmp_dir}" failonerror="false" />
+		<mkdir dir="${tmp_dir}" />
+
+		<copy todir="${tmp_dir}${pkg}">
+			<fileset dir="${classes_dir}${pkg}" />
+		</copy>		
+
+		<jar destfile="${to_jar}" basedir="${tmp_dir}" />
+		<delete dir="${tmp_dir}" />
+	</target>
+
+</project>

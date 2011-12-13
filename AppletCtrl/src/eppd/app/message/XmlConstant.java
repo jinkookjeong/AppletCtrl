@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class XmlConstant 
 {
 
-	public static String GET_XML_TEMPLATE_URL = "http://localhost:9999/templateApp/servlet/AppletGetTemplateServlet?DocCode=";
-	public static String GET_XPATH_INFO_URL = "http://localhost:9999/templateApp/servlet/AppletGetDBXPathServlet?DocCode=";
-	public static String SEND_MIME_FILE_URL = "http://localhost:9999/templateApp/servlet/AppletMimeRcvServlet";
+	public static String GET_XML_TEMPLATE_URL = "http://localhost:8088/AppletServer/servlet/AppletGetTemplateServlet?DocCode=";
+	public static String GET_XPATH_INFO_URL = "http://localhost:8088/AppletServer/servlet/AppletGetDBXPathServlet?DocCode=";
+	public static String SEND_MIME_FILE_URL = "http://localhost:8088/AppletServer/servlet/AppletMimeRcvServlet";
 
 	public static final String ELEMENT = "E";
 	public static final String ATTRIBUTE = "A";
