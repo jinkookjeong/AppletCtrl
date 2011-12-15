@@ -43,6 +43,8 @@ public class MakeXMLFile {
 	    	  	logger.LogSave("makeXmlFile DocCode: "+DocCode);	    	  	
 		    	String xslName = "";
 	    	  
+		    	winDlg.setProgress(winDlg.getProgress()+5);
+		    	
 		    	cont = (new GetXMLInfo()).getXmlTemplate(DocCode, Ocon);	
 		        String xmlTemplate = cont.getXmlTemplate();	
 		        if(xmlTemplate == null){
@@ -66,13 +68,15 @@ public class MakeXMLFile {
 		    	ObjectVO objVo = (new GetXMLInfo()).getXPATH(DocCode, Ocon);
 		        ObjectMasterVO[] mVo = (ObjectMasterVO[]) objVo.getArrObjBean();
 		        
+		        winDlg.setProgress(winDlg.getProgress()+5);
+		        
 		        logger.LogSave("formName: "+formName);
 		        int lSize = mVo.length;
 		        System.out.println("mVO.length:"+lSize);
 		        int pSize = winDlg.getProgress();
 		        for(int i=0; i<lSize; i++)
 		        {		    
-		        	winDlg.setProgress(pSize+i);
+		        	//winDlg.setProgress(pSize+i);
 		        	
 					String indent = (String)mVo[i].getIndent();		    
 					String iterator = (String)mVo[i].getIterator();		    
@@ -142,7 +146,9 @@ public class MakeXMLFile {
 	           cont.setSaveXmlPath(saveXmlFilePath);
 	           String subMsgId = cont.getMsgId().substring(0,cont.getMsgId().indexOf("."));
 	           cont.setSaveXmlName(subMsgId+".xml");
-	           	
+	           
+	           winDlg.setProgress(winDlg.getProgress()+5);
+	           
 	           logger.LogSave("saveXmlFilePath: "+saveXmlFilePath);
 		  }catch(IOException iox){
 			  throw iox;

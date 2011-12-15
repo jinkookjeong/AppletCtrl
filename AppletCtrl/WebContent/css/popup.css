@@ -1,0 +1,86 @@
+
+/*팝업존 스타일 시작*/
+/*팝업존 스트립트에 맞춰서 입혀진 CSS임...*/
+
+#popupStage{
+	width: 199px;
+	height: 68px;
+	overflow: hidden;
+}
+.boardStage a{
+	border:0;
+	margin:0;
+	padding:0;
+}
+#popupAnchor1{ 
+	position: absolute;
+	top: 6px;
+	left: 0;
+	width: 19px;
+	height: 13px;
+	background: url("images/pop_no01.gif") no-repeat;
+	overflow: hidden;
+}
+#popupAnchor1:hover{
+	background: url("images/pop_no01_off.gif") no-repeat;
+}
+#popupAnchor2{
+	position: absolute;
+	bottom: 6px;
+	left: 22px;
+	width: 19px;
+	height: 13px;
+	background: url("images/pop_no02.gif") no-repeat;
+	overflow: hidden;
+}
+#popupAnchor2:hover{
+	background: url("images/pop_no02_off.gif") no-repeat;
+}
+#popupAnchor3{
+	position: absolute;
+	bottom: 6px;
+	left: 44px;
+	width: 19px;
+	height: 13px;
+	background: url("images/pop_no03.gif") no-repeat;
+	overflow: hidden;
+}
+#popupAnchor3:hover{
+	background: url("images/pop_no03_off.gif") no-repeat;
+}
+#popupPlay{
+	position: absolute;
+	bottom: 2px;
+	left: 70px;
+	width: 13px;
+	height: 17px;
+	background: url("images/popup/popupzone_play.gif") no-repeat;
+ 
+}
+#popupStop{
+	position: absolute;
+	bottom: 2px;
+	left: 70px;
+	width: 13px;
+	height: 17px;
+	background: url("images/popup/popupzone_stop.gif") no-repeat;
+}
+
+
+/*popup layout(팝업업무화면. 2011.5.추가)*/
+#pop_layer{position:relative; width:100%; display:inline-block; overflow:auto; margin:0 auto; clear:both; text-align:center; background:url("../images/pop_topbg.gif") repeat-x 0 0; overflow-x:hidden;}
+	.pop_title{font-family:Verdana, Geneva, sans-serif; font-size:13px; font-weight:bold; padding:5px; background:url("../images/pop_title_bg.gif") repeat-x; margin-bottom:10px; text-align:left;}
+	.pop_title p{background:url("../images/bullet_pop_title.gif") no-repeat 0 0; color:#fff; padding-left:25px; margin:0; height:20px;}
+/* 처리결과 팝업 */
+	.pop_layout01{display:inline-block; padding-top:35px; clear:both;}
+	.popbg_left{float:left;}
+	.pop_contxt{margin-left:5px; padding:5px; float:left; text-align:left; color:#888;}
+	.pop_contxt p{padding:2px 0; word-break:break-all;}
+	.pop_contxt p.long{padding:2px 0; width:100%;}
+	.pop_contxt p.short{padding:2px 0; width:210px; word-break:break-all;}
+	.pop_contxt p.btn{padding:10px 0 0 0;}
+	.pop_contxt p.blue{color:#F00; font-weight:bold; font-size:14px;}
+	.pop_contxt p.blue2{color:#33a6e2; font-weight:bold; font-size:14px;}
+	.pop_btm{margin-top:10px;}
+	.pop_btn{margin:10px; border-top:1px dotted #999; padding:10px 0 0 0;}	
+	

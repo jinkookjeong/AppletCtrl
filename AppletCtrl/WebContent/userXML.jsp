@@ -16,18 +16,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>업체등록 XML</title>
-<link rel="stylesheet" type="text/css" href="/css/mn.css">
-<link rel="stylesheet" type="text/css" href="/css/sp.css">
-<link rel="stylesheet" type="text/css" href="/css/com/calendar.css">
-<script type="text/javascript" language="javascript" src="/js/com/prototype.js"></script>
-<script type="text/javascript" language="javascript" src="/js/com/calendar.js"></script>
-<script type="text/javascript" language="javascript" src="/js/com/check.js"></script>
-<script type="text/javascript" language="javascript" src="/js/com/popup.js"></script>
-<script type="text/javascript" language="javascript" src="/js/com/wzTooltip.js"></script>
-<script type="text/javascript" language="javascript" src="/js/menu.js"></script>
-<script type="text/javascript" language="javascript" src="/js/sp.js"></script>
+<link rel="stylesheet" type="text/css" href="/AppletCtrl/css/mn.css">
+<link rel="stylesheet" type="text/css" href="/AppletCtrl/css/com/calendar.css">
+<script type="text/javascript" language="javascript" src="/AppletCtrl/js/com/prototype.js"></script>
+<script type="text/javascript" language="javascript" src="/AppletCtrl/js/com/calendar.js"></script>
+<script type="text/javascript" language="javascript" src="/AppletCtrl/js/com/check.js"></script>
+<script type="text/javascript" language="javascript" src="/AppletCtrl/js/com/popup.js"></script>
+<script type="text/javascript" language="javascript" src="/AppletCtrl/js/com/wzTooltip.js"></script>
+<script type="text/javascript" language="javascript" src="/AppletCtrl/js/menu.js"></script>
+<script type="text/javascript" language="javascript" src="/AppletCtrl/js/sp.js"></script>
+ <script type="text/javascript" language="javascript" src="/AppletCtrl/js/Applet.js"></script>
 <script type="text/javascript">
 var factoryNo = 0;
+
+function rcvXML(){
+	alert("rcvXML: "+TZAPP);
+	TZAPP.ReceiveDocument("http://localhost:8088/AppletServer/servlet/AppletGetMimeServlet","S201112141035561031A","to_id");
+}
 
 function makeXML()
 {
@@ -72,6 +77,9 @@ function makeXML()
 	
 	frm.R_B_10_100.value = R_B_10_100;
 	frm.R_B_40.value = factoryNo;
+	
+	alert(TZAPP.sendDocument("RegistrationApplication","SIG", "frm_write"));
+	
 }
 
 function addFactory()
@@ -99,8 +107,18 @@ function addFactory()
     html += '<tr>';
 	html += '	<td class="tdc"><span>'+factoryNo+'<\/td>';
 	html += '	<td class="tdc"><input type="text" name="R_B_40_20" id="R_B_40_20" size="17"  value="'+factory_nm.value +'" maxlength="200" onblur=" check_checkLenth(this, 200);"><\/td>';
+	html += '	<td class="tdc"><input type="text" name="R_B_40_30_10" id="R_B_40_30_10" size="17"  value="'+factory_nm.value +'" maxlength="200" onblur=" check_checkLenth(this, 200);"><\/td>';
 	html += '	<td class="tdc"><input type="text" name="R_B_40_30_20_10" id="R_B_40_30_20_10" size="9" value="'+factory_tel_no.value +'" maxlength="20" onblur="check_checkLenth(this, 20);"><\/td>';
+	html += '	<td class="tdc"><input type="hidden" name="R_B_40_30_20_30" id="R_B_40_30_20_30" size="9" value="'+factory_tel_no.value +'" maxlength="20" onblur="check_checkLenth(this, 20);"><\/td>';
 	html += '	<td class="tdc"><input type="text" name="R_B_40_30_30_10" id="R_B_40_30_30_10" size="9" value="'+factory_fax_no.value +'" maxlength="20" onblur="check_checkLenth(this, 20);"><\/td>';
+	html += '	<td class="tdc"><input type="hidden" name="R_B_40_30_30_20" id="R_B_40_30_30_20" size="9" value="'+factory_tel_no.value +'" maxlength="20" onblur="check_checkLenth(this, 20);"><\/td>';
+	html += '	<td class="tdc"><input type="hidden" name="R_B_40_30_30_30" id="R_B_40_30_30_30" size="9" value="'+factory_tel_no.value +'" maxlength="20" onblur="check_checkLenth(this, 20);"><\/td>';
+	
+	html += '	<td class="tdc"><input type="hidden" name="R_B_40_30_40_10" id="R_B_40_30_40_10" size="9" value="'+factory_tel_no.value +'" maxlength="20" onblur="check_checkLenth(this, 20);"><\/td>';
+	html += '	<td class="tdc"><input type="hidden" name="R_B_40_30_40_20" id="R_B_40_30_40_20" size="9" value="'+factory_tel_no.value +'" maxlength="20" onblur="check_checkLenth(this, 20);"><\/td>';
+	html += '	<td class="tdc"><input type="hidden" name="R_B_40_30_40_30" id="R_B_40_30_40_30" size="9" value="'+factory_tel_no.value +'" maxlength="20" onblur="check_checkLenth(this, 20);"><\/td>';
+	
+	
 	html += '	<td class="tdc"><input type="text" name="R_B_40_40_10" id="R_B_40_40_10" size="5" value="'+factory_post_no.value +'" style="text-align:center;"><\/td>';
 	html += '	<td class="tdc"><input type="text" size="20" name="R_B_40_40_20" id="R_B_40_40_20" value="'+factory_area.value+" "+factory_addr.value+'"><\/td>';
 	html += '	<td class="tdce"><span class="btn_pack small"><a href="javascript:removeFactory('+factoryNo+');">삭제<\/a> <\/span><\/td>';
@@ -215,27 +233,29 @@ function corporationCheck(val)
 	
 	<form name="frm_write"  method="post" action="">
 	<!--  sender -->
-	<input type="text" name="R_H_10_20_10" id="R_H_10_20_10" value=""> <!-- sender_ID -->
-	<input type="text" name="R_H_10_20_20_10" id="R_H_10_20_20_10" value=""> <!-- STAFF_NM -->
-	<input type="text" name="R_H_10_20_20_20" id="R_H_10_20_20_20" value=""> <!-- EMAIL -->
-	<input type="text" name="R_H_10_20_20_30" id="R_H_10_20_20_30" value=""> <!-- FAX -->
-	<input type="text" name="R_H_10_20_20_40" id="R_H_10_20_20_40" value=""> <!-- TEL -->
+	<input type="text" name="R_H_10_20_10" id="R_H_10_20_10" value="sender_ID"> <!-- sender_ID -->
+	<input type="text" name="R_H_10_20_20_10" id="R_H_10_20_20_10" value="STAFF_NM"> <!-- STAFF_NM -->
+	<input type="text" name="R_H_10_20_20_20" id="R_H_10_20_20_20" value="EMAIL"> <!-- EMAIL -->
+	<input type="text" name="R_H_10_20_20_30" id="R_H_10_20_20_30" value="FAX"> <!-- FAX -->
+	<input type="text" name="R_H_10_20_20_40" id="R_H_10_20_20_40" value="TEL"> <!-- TEL -->
 	<input type="text" name="R_H_10_20_20_50" id="R_H_10_20_20_50" value="Seller"> <!-- Seller -->
 	
 	<!-- receiver -->
-	<input type="text" name="R_H_10_30_10" id="R_H_10_30_10" value=""> <!-- receiver_ID -->
-	<input type="text" name="R_H_10_30_20_10" id="R_H_10_30_20_10" value=""> <!-- STAFF_NM -->
-	<input type="text" name="R_H_10_30_20_20" id="R_H_10_30_20_20" value=""> <!-- EMAIL -->
-	<input type="text" name="R_H_10_30_20_30" id="R_H_10_30_20_30" value=""> <!-- FAX -->
-	<input type="text" name="R_H_10_30_20_40" id="R_H_10_30_20_40" value=""> <!-- TEL -->
+	<input type="text" name="R_H_10_30_10" id="R_H_10_30_10" value="receiver_ID"> <!-- receiver_ID -->
+	<input type="text" name="R_H_10_30_20_10" id="R_H_10_30_20_10" value="STAFF_NM"> <!-- STAFF_NM -->
+	<input type="text" name="R_H_10_30_20_20" id="R_H_10_30_20_20" value="EMAIL"> <!-- EMAIL -->
+	<input type="text" name="R_H_10_30_20_30" id="R_H_10_30_20_30" value="FAX"> <!-- FAX -->
+	<input type="text" name="R_H_10_30_20_40" id="R_H_10_30_20_40" value="TEL"> <!-- TEL -->
 	<input type="text" name="R_H_10_30_20_50" id="R_H_10_30_20_50" value="Center"> <!-- Center -->
 	
+	<input type="hidden" name="R_H_10_30" id="R_H_10_30" value="1"> <!-- receiver Number -->
+	
 	<!-- document -->
-	<input type="text" name="R_H_10_40_10" id="R_H_10_40_10" value=""> <!-- EXC_STAT -->
+	<input type="text" name="R_H_10_40_10" id="R_H_10_40_10" value="EXC_STAT"> <!-- EXC_STAT -->
 	<input type="text" name="R_H_10_40_20" id="R_H_10_40_20" value="1.0"> <!-- 1.0 -->
 	<input type="text" name="R_H_10_40_30" id="R_H_10_40_30" value="RegistrationApplication"> <!-- RegistrationApplication -->
 	<input type="text" name="R_H_10_40_40" id="R_H_10_40_40" value="U"> <!-- U -->
-	<input type="text" name="R_H_10_40_60" id="R_H_10_40_60" value=""> <!-- TIME -->
+	<input type="text" name="R_H_10_40_60" id="R_H_10_40_60" value="TIME"> <!-- TIME -->
 	
 	<!-- loop total value -->
 	<input type="text" name="R_B_40" id="R_B_40" value=""> 
@@ -275,11 +295,11 @@ function corporationCheck(val)
 	<tr>
 		<th class="thl"><span class="reddot">*</span>사업자등록번호</th>
 		<td class="tdl">
-		  	<input type="text" name="R_B_10_10" id="R_B_10_10" size="20"  onblur="replace_text(this);">
+		  	<input type="text" name="R_B_10_10" id="R_B_10_10" size="20"  value = "사업자등록번호" onblur="replace_text(this);">
 		</td>
 	    <th class="thl"><span class="reddot">*</span>상호명</th>
 	    <td class="tdle">
-			<input type="text" name="R_B_10_30" id="R_B_10_30" size="20" maxlength="200">
+			<input type="text" name="R_B_10_30" id="R_B_10_30" size="20" value = "상호명" maxlength="200">
 		</td>
 	</tr>
 	<tr>
@@ -303,12 +323,12 @@ function corporationCheck(val)
 	<tr>
 		<th class="thl"><span class="reddot">*</span>국가등록번호</th>
 		<td class="tdl">
-			<input type="text" name="R_B_10_20" id="R_B_10_20" value="" size="20"  onblur="replace_text(this);">
+			<input type="text" name="R_B_10_20" id="R_B_10_20" value="국가등록번호" size="20"  onblur="replace_text(this);">
 		</td>
 		<th class="thl"><span class="reddot" id="reddotcheck3">*</span>개업일자</th>
 		<td class="tdle">
 			<input type="text" name=R_B_10_90 id="R_B_10_90" size="10" maxlength="10" class="read" value="" onblur="javascript:check_dateCheck(this,'-');" onFocus="check_removeCharInput(this,'-');" style="WIDTH:80px" >	
-            <a href="#" onclick="Calendar_D('R_B_10_90');return false;"><img src="/images/cal.gif" alt="calendar" width="14" height="14" border="0"></a>
+            <a href="#" onclick="Calendar_D('R_B_10_90');return false;"><img src="/AppletCtrl/images/cal.gif" alt="calendar" width="14" height="14" border="0"></a>
 		</td> 
 	</tr>	
 	<tr>
@@ -338,33 +358,33 @@ function corporationCheck(val)
 	<tr> 
 		<th class="thl"><span class="reddot">*</span>우편번호</th>
 		<td colspan="3" class="tdle">
-			<input type="text" name="R_B_10_150_10" id="R_B_10_150_10"  size="10">			
+			<input type="text" name="R_B_10_150_10" id="R_B_10_150_10"  value = "우편번호" size="10">			
 		</td>
 	</tr> 
 	<tr> 
 		<th rowspan="2" class="thl"><span class="reddot">*</span>주소</th> 
 		<td colspan="3" class="tdle">
-			<input type="text" name="R_B_10_150_20" id="R_B_10_150_20" size="70"> 
+			<input type="text" name="R_B_10_150_20" id="R_B_10_150_20" value ="주소" size="70"> 
 		</td>
 	</tr>         
 	<tr>
 		<th class="thl"><span class="reddot">*</span>전화번호</th>
 		<td class="tdl">
-			<input type="text" name="R_B_10_160_20_10" id="R_B_10_160_20_10"  size="20" maxlength="20" onblur="check_checkLenth(this, 20);">
+			<input type="text" name="R_B_10_160_20_10" id="R_B_10_160_20_10"  value ="전화번호" size="20" maxlength="20" onblur="check_checkLenth(this, 20);">
 		</td>
 		<th class="thl">팩스번호</th>
 		<td class="tdle"> 
-			<input type="text" name="R_B_10_160_30_10" id="R_B_10_160_30_10" size="20" maxlength="20" onblur="check_checkLenth(this, 20);">
+			<input type="text" name="R_B_10_160_30_10" id="R_B_10_160_30_10" size="20" value ="팩스번호" maxlength="20" onblur="check_checkLenth(this, 20);">
 		</td>
 	</tr>
 	<tr>
 		<th class="thl"><span class="reddot" id="reddotcheck5">*</span>자본금</th>
 		<td class="tdl">
-			<input type="text" name="R_B_10_120" id="R_B_10_120" style="text-align:right;" maxlength="18" onblur="check_NumberFormat(this, 9);check_checkLenth(this, 23);" size="20">
+			<input type="text" name="R_B_10_120" id="R_B_10_120" value="자본금" style="text-align:right;" maxlength="18" onblur="check_NumberFormat(this, 9);check_checkLenth(this, 23);" size="20">
 		</td>
 		<th class="thl"><span class="reddot" id="reddotcheck6">*</span>종업원수</th>
 		<td class="tdle">
-			<input type="text" name="R_B_10_130_10" id="R_B_10_130_10"  style="text-align:right;" maxlength="10" onblur="check_NumberFormat(this, 9); check_checkLenth(this, 10);" size="20">
+			<input type="text" name="R_B_10_130_10" id="R_B_10_130_10"  value ="종업원수" style="text-align:right;" maxlength="10" onblur="check_NumberFormat(this, 9); check_checkLenth(this, 10);" size="20">
 		</td>
 	</tr>	
 	<tr>
@@ -394,21 +414,21 @@ function corporationCheck(val)
 		<tr>
 			<th class="th1"><span class="reddot" id="reddotcheck7">*</span>대표자명</th>
 			<td class="tdl">
-				<input type="text" name="R_B_30_20" id="R_B_30_20" size="20" maxlength="200" onblur="check_checkLenth(this, 200);">
+				<input type="text" name="R_B_30_20" id="R_B_30_20" size="20" value="대표자명" maxlength="200" onblur="check_checkLenth(this, 200);">
 			</td>
 		    <th class="thl"><span class="reddot" id="reddotcheck8">*</span>주민등록번호</th>
 		    <td class="tdle">
-				<input type="text" name="R_B_30_30" id="R_B_30_30" size="20" maxlength="13" onblur="check_checkLenth(this, 16);">
+				<input type="text" name="R_B_30_30" id="R_B_30_30" size="20" value="대표자 주민등록번호" maxlength="13" onblur="check_checkLenth(this, 16);">
 			</td>
 		</tr>
 		<tr>
 			<th class="th1"><span class="reddot" id="reddotcheck9">*</span>핸드폰번호</th>
 			<td class="tdl">
-				<input type="text" name="R_B_30_60_10" id="R_B_30_60_10" size="20" maxlength="20" onblur="check_checkLenth(this, 20);">
+				<input type="text" name="R_B_30_60_10" id="R_B_30_60_10" value="대표자 핸드폰번호" size="20" maxlength="20" onblur="check_checkLenth(this, 20);">
 			</td>
 			<th class="thl"><span class="reddot" id="reddotcheck10">*</span>이메일</th>
 			<td class="tdle">
-				<input type="text" name="R_B_30_50_20" id="R_B_30_50_20" size="20" maxlength="50" onblur="check_checkLenth(this, 50);">
+				<input type="text" name="R_B_30_50_20" id="R_B_30_50_20" value="대표자 이메일" size="20" maxlength="50" onblur="check_checkLenth(this, 50);">
 			</td>
 		</tr>	
 		</table>
@@ -547,7 +567,7 @@ function corporationCheck(val)
 	    	<input type="text" name="R_B_60_60_10" id="R_B_60_60_10" size="10" maxlength="10" class="read" value="" 
 			onblur="javascript:check_dateCheck(this,'-');" onFocus="check_removeCharInput(this,'-');" style="WIDTH:80px" >	
                   <a href="#" onclick="Calendar_D('R_B_60_60_10');return false;">
-				<img src="/images/cal.gif" alt="calendar"
+				<img src="/AppletCtrl/images/cal.gif" alt="calendar"
 				width="14" height="14" border="0">
 			</a>
 		</td>
@@ -558,7 +578,7 @@ function corporationCheck(val)
 		 	<input type="text" name="R_B_60_60_20" id="R_B_60_60_20" size="10" maxlength="10" class="read" value="" 
 			onblur="javascript:check_dateCheck(this,'-');" onFocus="check_removeCharInput(this,'-');" style="WIDTH:80px" >	
                   <a href="#" onclick="Calendar_D('R_B_60_60_20');return false;">
-				<img src="/images/cal.gif" alt="calendar"
+				<img src="/AppletCtrl/images/cal.gif" alt="calendar"
 				width="14" height="14" border="0">
 			</a>
 		</td>
@@ -640,9 +660,9 @@ function corporationCheck(val)
 	</table>
 	</div>
 	<div class="btn_div">
-		<span class="button small blue" style="float:right; clear:both;">
-   			<a href="javascript:makeXML();"><em>XML 작성</em></a><!-- Application Registration  :: 등록신청	 -->
-   		</span>
+   			<a href="javascript:makeXML();">XML 송신</a><!-- Application Registration  :: 등록신청	 -->
+   			</br>
+   			<a href="javascript:rcvXML();">XML 수신</a><!-- Application Registration  :: 등록신청	 -->
    	</div>   	
 	</form>
 </div>  

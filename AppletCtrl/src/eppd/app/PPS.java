@@ -16,6 +16,7 @@ import eppd.app.mxml.MakeSoapFile;
 import eppd.app.mxml.MakeXMLFile;
 import eppd.app.util.Cookie;
 import eppd.app.util.DirManager;
+import eppd.app.window.ReceiveWindow;
 import eppd.app.window.SendWindow;
 import netscape.javascript.JSObject;
 
@@ -100,7 +101,27 @@ public class PPS extends Applet {
 	  
 	  return result;
   }
-  
+   public String ReceiveDocument(String url, String unikey, String to_id)
+   {   
+	   String result = "";
+	    try 
+	    {
+	    	logger.LogSave("ReceiveDocument start");	    	
+	    
+	    	ReceiveWindow rcvWin = new ReceiveWindow(url, unikey, to_id, Ocon, logger, m_msgLang, m_lang);
+	    	
+	    	rcvWin.rcvXmlFile();
+		   	
+	   	    logger.LogSave("sendDocument end");
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = "E^ERROR^"+e.getMessage();
+		}
+	  
+	  return result;
+  }
+   
+   
   public void start()
   {    
 	  String workingHome = DirManager.workingHome;

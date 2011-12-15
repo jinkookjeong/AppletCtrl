@@ -77,6 +77,8 @@ public class MakeMimeFile {
     	String subMsgId = cont.getMsgId().substring(0,cont.getMsgId().indexOf("."));    	 
     	cont.setSaveMimeName(subMsgId+".mime");
     	logger.LogSave("saveMimeFilePath: "+saveMimeFilePath);
+    	
+    	winDlg.setProgress(winDlg.getProgress()+5);
     	return cont;
 	}
     

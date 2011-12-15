@@ -1,6 +1,7 @@
 package eppd.app.message;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
 public class XmlConstant 
 {
@@ -42,6 +43,14 @@ public class XmlConstant
 	private ArrayList attachList;	
 	private ArrayList encAttachList;
 	private ArrayList signAttachList;
+	private Vector rawFileName;	
+    
+	public Vector getRawFileName() {
+		return rawFileName;
+	}
+	public void setRawFileName(Vector rawFileName) {
+		this.rawFileName = rawFileName;
+	}
 	
 	public String getSaveXmlName() {
 		return saveXmlName;

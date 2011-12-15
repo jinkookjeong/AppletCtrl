@@ -1,0 +1,164 @@
+/* Layout */
+#contents_wrap{width:1000px; margin:0 auto; height:auto !important; height:100%; min-height:100%;}
+	#header{width:1000px; _padding-top:20px; position:relative; margin:0 auto; background-color:#fff; display:inline-block; padding-bottom:10px; font-size:11px; color:#666;}
+	#header h1{float:left;}
+	#header ul{float:right; padding-top:5px;}
+	#header ul li{ display:inline; padding:0 8px; border-left:1px solid #cbd7d4; height:12px; font-weight:bold;}
+	#header ul li.flag{ display:inline; padding:5px 0 0 8px; font-weight:bold;border:0;}
+	#header ul li.left{ border-left:0;}	
+	#header ul li.menul{display:inline; padding:0 8px 0 25px; border-left:0; height:12px;}
+	#header ul li.menu{display:inline; padding:0 8px; border-left:1px solid #8fc2dd; height:12px;}
+	#header ul li.blue{display:inline; padding:0 8px; border-left:1px solid #cbd7d4; height:12px;}
+#footer{width:1000px; height:50px; margin:0 auto; background-color:#fff; background:url(../images/footer_bg.gif) repeat-x; display:block; clear:both;}
+	.footer_left{width:10px; height:50px; background:url(../images/footer_bg_left.gif) no-repeat; float:left;}
+	.footer_right{width:10px; height:50px; background:url(../images/footer_bg_right.gif) no-repeat; float:right;}
+#footer .center{float:left; padding:15px 0 5px 10px;}
+	.footer_link{float:left; width:450px;}
+	.footer_link img{padding-right:5px;}
+	.footer_link2{float:right; font-size:11px; right:0; margin-top:5px;}
+#footer a.menu{padding:0 10px 0 20px; border-right:1px solid #ccc; font-size:11px;}
+#footer a.copyright{padding-right:25px; padding-left:5px; font-size:11px;}
+	
+/* Common */ 
+html, body {margin:0 auto; padding:0; height:100%;font-size:12px;}
+table,th,td,form,fieldset,legend,input,textarea,button,select,p, ul li{margin:0;padding:0}
+h2,h3{display:none}
+h4{padding-bottom:5px;}
+body,textarea,select,button,tSable{font-family:Dotum,AppleGothic,sans-serif,Arial;font-size:12px; color:#444;}
+textarea{padding:5px;}
+fieldset{border:0}
+img {border:0; vertical-align:middle;}
+fieldset{display:inline-block;}
+em,address{font-style:normal}
+a {text-decoration:none;}
+a:link, a:visited, a:active {color:#696969;}
+a:hover {color: #6986a4;}
+a.blue:link, a.blue:visited, a.blue:active {color:#33a6e2; font-weight:bold;}
+a.blue:hover {color: #33a6e2; font-weight:bold;}
+a.article02 {text-decoration:underline; font-weight:bold;}
+a.article02:link, a.article02:visited, a.article02:active {color:#0f3b8c;}
+a.article02:hover {color: #6986a4; text-decoration:underline;}
+.none{display:none;}
+.blue {color:#56ace0;}
+ul li{margin:0px; padding:0px; list-style:none;}
+.txt_red{color:#FF0000;}
+.txt_green{color:#e1ff15;}
+.input_box {border:1px solid #c7c7c7; font-size:1em; padding:1px; color:#666; height:16px;}
+td, textarea, div, th, p {font-family:Arial, Malgun Gothic; margin:0; padding:0; font-size:9pt;}
+.input02{ float:left; margin:2px 0 2px 0; background-color:#e3e3e3; border:1px solid #b7b7b7;}
+form {margin:0; padding:0;}O
+p {margin:0; padding:0;}
+fieldset {border:0 none; padding:0; margin:0;font-family:Arial, Malgun Gothic;}
+select{ font-size:12px;font-family:Arial, Malgun Gothic; color:#666;}
+:root td input{ height:18px;}
+
+/* common buttons */
+.btn_input01{width:182px; height:30px;color:#0066FF;}
+a2{overflow:hidden;text-decoration:none;color:#111;}
+a2:hover,a2:active,a2:focus{text-decoration:underline;color:#111;}
+a.btn_big{display:inline-block;background:url(/images/btn_supplyorg.gif) no-repeat 100%;font-size:12px;color:#444;line-height:26px;word-spacing:-1px;text-decoration:none !important;
+white-space:nowrap;width:182px;height:30px;font-weight:bold;}  
+a.btn_big span,a.btn_big strong{display:inline-block;} 
+a.btn_blue{display:inline-block;background:url(/images/btn/btn_blue.gif) repeat-x 100%;font-size:12px;color:#444;line-height:26px;word-spacing:-1px;text-decoration:none !important;
+white-space:nowrap;color:#fff; padding:0 10px;}
+a.btn_blue:hover{color:#000066;}  
+a.btn_blue span,a.btn_gray strong{display:block;margin:5px 2px;color:#fff; font-weight:bold;}
+
+/*Button Pack */
+.btn_pack,
+.btn_pack *{display:inline-block;overflow:visible;position:relative;margin:0;padding-left:0;border:0;background:url(../images/btn/btn_pack.gif) no-repeat;font-size:12px;font-family:Tahoma, Sans-serif;color:#333;text-decoration:none !important;vertical-align:top;white-space:nowrap}
+.btn_pack{margin-right:4px; margin-left:4px;}
+.btn_pack *{left:4px;cursor:pointer;_cursor:hand}
+.btn_pack.medium,
+.btn_pack.medium *{height:26px;line-height:24px}
+.btn_pack.large,
+.btn_pack.large *{height:30px;line-height:30px}
+.btn_pack.xlarge,
+.btn_pack.xlarge *{height:36px;line-height:36px}
+.btn_pack.small,
+.btn_pack.small *{height:19px;line-height:19px}
+.btn_pack.medium{background-position:left 0}
+.btn_pack.large{background-position:left -30px}
+.btn_pack.xlarge{background-position:left -65px}
+.btn_pack.small{background-position:left -106px}
+.btn_pack.medium *{padding:0 10px 0 6px;background-position:right top;font-size:12px;font-weight:bold;}
+.btn_pack.large *{padding:0 10px 0 6px;background-position:right -30px;font-size:16px}
+.btn_pack.xlarge *{padding:0 10px 0 6px;background-position:right -65px;font-size:20px}
+.btn_pack.small *{padding:0 6px 0 2px;background-position:right -106px;font-size:11px}
+.btn_pack *:hover,
+.btn_pack *:active,
+.btn_pack *:focus{color:#690}
+.btn_pack.strong *{font-weight:bold !important}
+.btn_pack.icon *{padding-left:20px}
+.btn_pack.small.icon *{padding-left:16px}
+.btn_pack.icon span{width:20px;margin-right:-20px;padding:0 !important}
+.btn_pack.medium .check{background-position:4px -150px}
+.btn_pack.large .check{background-position:4px -146px}
+.btn_pack.xlarge .check{background-position:5px -144px}
+.btn_pack.small .check{background-position:3px -153px}
+.btn_pack.medium .add{background-position:-16px -150px}
+.btn_pack.large .add{background-position:-14px -146px}
+.btn_pack.xlarge .add{background-position:-14px -144px}
+.btn_pack.small .add{background-position:-18px -153px}
+.btn_pack.medium .delete{background-position:-34px -150px}
+.btn_pack.large .delete{background-position:-34px -146px}
+.btn_pack.xlarge .delete{background-position:-34px -144px}
+.btn_pack.small .delete{background-position:-37px -153px}
+.btn_pack.medium .calendar{background-position:-56px -150px}
+.btn_pack.large .calendar{background-position:-56px -146px}
+.btn_pack.xlarge .calendar{background-position:-56px -144px}
+.btn_pack.small .calendar{background-position:-59px -153px}
+.btn_pack.medium .refresh{background-position:-76px -150px}
+.btn_pack.large .refresh{background-position:-76px -146px}
+.btn_pack.xlarge .refresh{background-position:-76px -144px}
+.btn_pack.small .refresh{background-position:-79px -153px}
+.btn_pack.medium .download{background-position:-96px -151px}
+.btn_pack.large .download{background-position:-96px -147px}
+.btn_pack.xlarge .download{background-position:-96px -145px}
+.btn_pack.small .download{background-position:-99px -154px}
+
+/*2011.5.16 button add*/
+
+.button {margin:0; margin-right:14px; float:left; cursor:pointer; _cursor:hand; font-size:12px;}
+.button.small {height:19px; font-size:12px; padding:1px 6px 0 2px;}
+.button.small.white a{display:block; background:url('/images/btn/btn.gif') left 0; float:left;color:#333; padding-left:6px; text-decoration:none; height:19px; cursor:pointer; margin-right:3px; overflow:hidden; font-style:normal;text-decoration:none !important;}
+.button.small.white a em{ display:block; float:left; background:url('/images/btn/btn.gif') right 0; line-height:19px; padding-right:6px; height:19px; overflow:hidden; color:#333; font-style:normal;text-valign:middle;}
+.button.small.white em{ background:url('/images/btn/btn.gif') right 0;color:#333;text-decoration:none !important;}
+.button.small.white a:hover em{ display:block; float:left; line-height:19px; padding-right:6px; overflow:hidden; color:#690; text-decoration:none; font-style:normal;}	
+
+.button.small.gray a{display:block; background:url('/images/btn/btn_gray.gif') left 0; float:left;color:#FFFFFF; padding-left:6px; text-decoration:none; height:19px; cursor:pointer; margin-right:3px; overflow:hidden; font-style:normal;text-decoration:none !important;}
+.button.small.gray a em{display:block; float:left; background:url('/images/btn/btn_gray.gif') right 0; line-height:19px; padding-right:6px; height:19px;overflow:hidden; color:#FFFFFF; font-style:normal;text-decoration:none !important;}
+.button.small.gray em{background:url('/images/btn/btn_gray.gif') right 0;color:#FFFFFF; height:19px; text-decoration:none !important;}
+.button.small.gray a:hover em{display:block; float:left; line-height:19px; padding-right:6px; overflow:hidden; color:#BDBEBE; text-decoration:none; font-style:normal;text-decoration:none !important;}
+
+.btn_div{float:right; clear:both; padding-bottom:15px;}
+.button.small.blue a{display:block; background:url('/images/btn/btn_blue.gif') left 0; float:left;color:#FFFFFF; padding-left:6px; text-decoration:none; height:22px; cursor:pointer; margin-right:3px; overflow:hidden; font-style:normal; font-weight:bold;}
+.button.small.blue a em{display:block; float:left; background:url('/images/btn/btn_blue.gif') right 0; line-height:22px; padding-right:6px; height:22px;overflow:hidden; color:#FFFFFF; font-style:normal; font-weight:bold;}
+.button.small.blue em{background:url('/images/btn/btn_gray.gif') right 0;color:#FFFFFF; font-weight:bold;}
+.button.small.blue a:hover em{display:block; float:left; line-height:22px; padding-right:6px; overflow:hidden; color:#000066; text-decoration:none; font-style:normal;font-weight:bold;}
+
+/* Button Hover */
+.button *:hover,
+.button *:active,
+.button *:focus{ color:#0000EB;}
+
+
+.myButton {
+	BORDER-BOTTOM: #dcdcdc 1px solid; BORDER-LEFT: #dcdcdc 1px solid; PADDING-BOTTOM: 4px; BACKGROUND-COLOR: #fff5ff; PADDING-LEFT: 12px; PADDING-RIGHT: 12px; DISPLAY: inline-block; FONT-FAMILY: Trebuchet MS; COLOR: #444444; FONT-SIZE: 13px; BORDER-TOP: #dcdcdc 1px solid; FONT-WEIGHT: bold; BORDER-RIGHT: #dcdcdc 1px solid; TEXT-DECORATION: none; PADDING-TOP: 4px; -moz-box-shadow: inset 0px 1px 0px 0px #ffffff; -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff; box-shadow: inset 0px 1px 0px 0px #ffffff; -moz-border-radius: 13px; -webkit-border-radius: 13px; border-radius: 13px; text-shadow: 1px 1px 0px #ffffff
+}
+.myButton:hover {
+	BACKGROUND-COLOR: #f0f0f0
+}
+.myButton:active {
+	POSITION: relative; TOP: 1px
+}
+
+/*버튼 div속성*/
+
+
+
+<div class="btn_div"><a class="btn_blue" href="javascript:save();"><strong>등록신청</strong> </a></div> 
+
+    
+
+    

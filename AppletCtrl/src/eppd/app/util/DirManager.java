@@ -158,7 +158,7 @@ public class DirManager
         return dirXml;
     }
     
-    public static File getReceive()
+    public static File getDirReceive()
     {
         return dirReceive;
     }

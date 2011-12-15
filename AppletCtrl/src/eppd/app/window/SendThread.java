@@ -103,8 +103,6 @@ public class SendThread implements Runnable
 			
 			winDlg.setStatusMapMessage("1019"); //전송에 성공하였습니다.
 			winDlg.setProgress(100);
-			
-			
 		  
 		} catch (XMLParseException e) {	
 			winDlg.setStatusMapMessage("1020"); //전송에 실패하였습니다.

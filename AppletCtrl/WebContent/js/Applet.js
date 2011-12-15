@@ -11,7 +11,7 @@
 	    ' java_arguments="-Xmx512M"'+
 	    ' type="application/x-java-applet;version=1.6"'+ 
 		' codebase_lookup="false"'+	
-	    ' archive="xmlparserv2.jar,activation.jar,netscape.jar,commons-io-1.4.jar, app.jar"'+
+	    ' archive="xmlparserv2.jar,activation.jar,netscape.jar,commons-io-1.4.jar,mail.jar, app.jar"'+
 	    ' cache_option="Plugin"'+
 	    ' separate_jvm="true"'+
 		' MAYSCRIPT="true"'+
@@ -32,7 +32,7 @@
 		    ' <PARAM NAME="type" VALUE="application/x-java-applet;version=1.6" />'+
 		  
 		    ' <PARAM NAME="codebase_lookup" value="false"/>' +   
-		    ' <PARAM NAME="archive" value="java/download/xmlparserv2.jar,java/download/activation.jar,java/download/netscape.jar,java/download/commons-io-1.4.jar,java/download/app.jar," />'+
+		    ' <PARAM NAME="archive" value="java/download/xmlparserv2.jar,java/download/activation.jar,java/download/netscape.jar,java/download/commons-io-1.4.jar,java/mail.jar,java/download/app.jar," />'+
 		    ' <PARAM NAME="separate_jvm" value="true" />'+
 		    ' <PARAM NAME="cache_option" value="Plugin" />'+
 			' <PARAM NAME="MAYSCRIPT" value="true" />' + 			

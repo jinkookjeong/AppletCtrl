@@ -144,43 +144,46 @@ public class MakeSoapFile {
 		   XMLUtil.PutValues(soapDoc, "/SOAP:Envelope/SOAP:Body/eb:Manifest/eb:Reference/eb:Description", headerVo.getDocCode());
 		   HeaderAttachVO[] attchVo = headerVo.getAttachVo();
 		   ArrayList attachList = new ArrayList();
-		   int atSize = attchVo.length;
-		   if(atSize > 20){ //20  이상
-			   throw new Exception(langMgr.getMessage(lang, "1030")); //첨부문서 개수가 20개이상 초과하여 문서를 송신할 수 없습니다.
-		   }
-		   for(int i=1; i < atSize+1; i++)
+		   if(attchVo != null)
 		   {
-			   String filePath = attchVo[i-1].getFilePath();
-			   String fileName = attchVo[i-1].getFileName();
-			   String idx = ""+i;
-	    		if(i <= 9 ){
-	    			idx = "0"+i;
-	    		}	    		
-	    	   String exd ="";
-	    	   int lastIdx = filePath.lastIndexOf(".");
-	    	   int sLangth = filePath.length();
-	    	   
-	    	   if(lastIdx > -1){
-	    		   exd = filePath.substring(lastIdx+1, sLangth);
-	    	   }
-	    	   
-			   XMLUtil.copyNode(soapDoc, "/SOAP:Envelope/SOAP:Body/eb:Manifest/eb:Reference");
-			   XMLUtil.putAttrValue(soapDoc, "/SOAP:Envelope/SOAP:Body/eb:Manifest/eb:Reference", "xlink:href", "cid:ebxmlpayload"+idx+"@pps.go.kr", i); //Attribute
-			   XMLUtil.PutValues(soapDoc, "/SOAP:Envelope/SOAP:Body/eb:Manifest/eb:Reference/eb:Description", filePath+"^"+fileName, i);
-			   File orgAttach = new File(filePath);
-			   long attachSize = (long)orgAttach.length();
-			   System.out.println("attachSize=> "+attachSize);
-			   if(attachSize > (7 * 1024 * 1024)){ //7M 이상
-				 
-				   throw new Exception(langMgr.getMessage(lang, "1028")); //송신할 문서의 크기가 7M를 초과하였습니다.
-			   }else if(attachSize <= 0){
-				   
-				   throw new Exception(langMgr.getMessage(lang, "1029")+ "["+fileName+"]["+filePath+"]");	 //0 Size 문서는 첨부하실수 없습니다.			   				   
+			   int atSize = attchVo.length;
+			   if(atSize > 20){ //20  이상
+				   throw new Exception(langMgr.getMessage(lang, "1030")); //첨부문서 개수가 20개이상 초과하여 문서를 송신할 수 없습니다.
 			   }
-			   
-			   String attachFilePath = (new StringBuilder()).append(DirManager.getDirAttach()).append(DirManager.fileSeparator).append(msgId+"."+idx+"."+exd).toString().toString();
-			   FileUtils.copyFile(orgAttach, new File(attachFilePath));
-			   attachList.add(attachFilePath);
+			   for(int i=1; i < atSize+1; i++)
+			   {
+				   String filePath = attchVo[i-1].getFilePath();
+				   String fileName = attchVo[i-1].getFileName();
+				   String idx = ""+i;
+		    		if(i <= 9 ){
+		    			idx = "0"+i;
+		    		}	    		
+		    	   String exd ="";
+		    	   int lastIdx = filePath.lastIndexOf(".");
+		    	   int sLangth = filePath.length();
+		    	   
+		    	   if(lastIdx > -1){
+		    		   exd = filePath.substring(lastIdx+1, sLangth);
+		    	   }
+		    	   
+				   XMLUtil.copyNode(soapDoc, "/SOAP:Envelope/SOAP:Body/eb:Manifest/eb:Reference");
+				   XMLUtil.putAttrValue(soapDoc, "/SOAP:Envelope/SOAP:Body/eb:Manifest/eb:Reference", "xlink:href", "cid:ebxmlpayload"+idx+"@pps.go.kr", i); //Attribute
+				   XMLUtil.PutValues(soapDoc, "/SOAP:Envelope/SOAP:Body/eb:Manifest/eb:Reference/eb:Description", filePath+"^"+fileName, i);
+				   File orgAttach = new File(filePath);
+				   long attachSize = (long)orgAttach.length();
+				   System.out.println("attachSize=> "+attachSize);
+				   if(attachSize > (7 * 1024 * 1024)){ //7M 이상
+					 
+					   throw new Exception(langMgr.getMessage(lang, "1028")); //송신할 문서의 크기가 7M를 초과하였습니다.
+				   }else if(attachSize <= 0){
+					   
+					   throw new Exception(langMgr.getMessage(lang, "1029")+ "["+fileName+"]["+filePath+"]");	 //0 Size 문서는 첨부하실수 없습니다.			   				   
+				   }
+				   
+				   String attachFilePath = (new StringBuilder()).append(DirManager.getDirAttach()).append(DirManager.fileSeparator).append(msgId+"."+idx+"."+exd).toString().toString();
+				   FileUtils.copyFile(orgAttach, new File(attachFilePath));
+				   attachList.add(attachFilePath);
+			   }
 		   }
 		   
 		   cont.setAttachList(attachList); //Attach File Add...
@@ -276,6 +279,7 @@ public class MakeSoapFile {
 		     NodeList attachList = doc.getElementsByTagName("AttachmentBinaryFile");
 		     int asize = attachList.getLength();
 		     HeaderAttachVO[] attachVo = new HeaderAttachVO[asize];
+		     
 		     for(int i=0; i< asize; i++)
 		     {
 		    	 String fileLineNo = XMLUtil.getNodeValue(doc, 
@@ -285,12 +289,15 @@ public class MakeSoapFile {
 		    	 String filePath  = XMLUtil.getNodeValue(doc, 
 						 "/*/*/sbd:AttachmentBinaryFile/ram:FileName", i );
 		    	 
-		    	 HeaderAttachVO aVo = new HeaderAttachVO();
-		    	 aVo.setFileLineNo(fileLineNo);
-		    	 aVo.setFileName(fileName);
-		    	 aVo.setFilePath(filePath);
-		    	 attachVo[i] = aVo;
-		    	 headerVo.setAttachVo(attachVo);
+		    	 if(!fileLineNo.equals(""))
+		    	 {
+			    	 HeaderAttachVO aVo = new HeaderAttachVO();
+			    	 aVo.setFileLineNo(fileLineNo);
+			    	 aVo.setFileName(fileName);
+			    	 aVo.setFilePath(filePath);
+			    	 attachVo[i] = aVo;
+			    	 headerVo.setAttachVo(attachVo);
+		    	 }
 		     }
 	     }catch(Exception ex){};
 		 

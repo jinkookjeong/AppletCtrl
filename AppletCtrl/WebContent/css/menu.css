@@ -1,0 +1,6 @@
+a.gnb:link, a.gnb:visited, a.gnb:active{font-size:1.1em;font-weight:bold;color:#fff;padding-bottom:5px;}
+a.gnb:hover{font-size:1.1em;font-weight:bold;color:#000066;padding-bottom:5px;}
+.top{width:1000px; text-align:center; float:left; clear:both; background:url(../images/menubar_bg.gif) repeat-x; display:inline;}
+.top dl{margin:0;}
+.top dl dt.blind{display:none;}
+.top dl dd{padding:0 20px; display:inline;}  

@@ -55,12 +55,12 @@ public class SendMimeFile implements Runnable
 			  parser.parse(sr);
 			  doc = parser.getDocument(); 
 			  
-				String unikey = XMLUtil.GetValues(doc,"/response/unikey" );
-				String result = XMLUtil.GetValues(doc,"/response/result" );
-				String message = XMLUtil.GetValues(doc,"/response/message" );
-			    cont.setUnikty(unikey);
-			    cont.setResult(result);
-			    cont.setMessage(message);
+			  String unikey = XMLUtil.GetValues(doc,"/response/unikey" );
+			  String result = XMLUtil.GetValues(doc,"/response/result" );
+			  String message = XMLUtil.GetValues(doc,"/response/message" );
+			  cont.setUnikty(unikey);
+			  cont.setResult(result);
+			  cont.setMessage(message);
 			    
 		  } catch (XMLParseException e) {
 				throw e;
