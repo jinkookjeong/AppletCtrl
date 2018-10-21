@@ -23,7 +23,7 @@
   		<%
   		HashMap hash = new HashMap();
   		hash.put("X","A");
-  	
+  	 //test
   		%>
   		
   		var frm = document.XMLForm;
